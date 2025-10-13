@@ -1,30 +1,22 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import TimesheetFilters from "../components/TimesheetFilters";
+import TimesheetTable from "../components/TimesheetTable";
+import Pagination from "../components/Pagination";
 
-export default function Dashboard() {
-  const navigate = useNavigate();
-  const token = sessionStorage.getItem("authToken");
-
-  if (!token) {
-    navigate("/login");
-    return null;
-  }
-
-  const handleLogout = () => {
-    sessionStorage.removeItem("authToken");
-    navigate("/login");
-  };
-
+export default function App() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
-      <h1 className="text-2xl font-bold mb-4">Welcome to Dashboard 👋</h1>
-      <p className="mb-4 text-sm text-gray-600">Token: {token}</p>
-      <button
-        onClick={handleLogout}
-        className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
-      >
-        Logout
-      </button>
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      <Navbar />
+      <main className="flex-1 px-6 py-8 max-w-6xl mx-auto w-full">
+        <h1 className="text-2xl font-semibold mb-6">Your Timesheets</h1>
+        <TimesheetFilters />
+        <TimesheetTable />
+        <Pagination />
+      </main>
+      <footer className="text-center py-4 text-gray-500 text-sm border-t">
+        © 2024 gomese. All rights reserved.
+      </footer>
     </div>
   );
 }
