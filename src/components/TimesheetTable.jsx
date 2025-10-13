@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const data = [
   { week: 1, date: "1 - 5 January, 2024", status: "COMPLETED" },
@@ -15,6 +16,12 @@ const statusStyles = {
 };
 
 export default function TimesheetTable() {
+  const navigate = useNavigate();
+
+  const handleRowClick = (week) => {
+    navigate(`/dashboard/${week}`);
+  };
+
   return (
     <div className="overflow-x-auto bg-white shadow rounded-lg border">
       <table className="w-full text-left">
@@ -28,7 +35,11 @@ export default function TimesheetTable() {
         </thead>
         <tbody className="text-gray-800 text-sm">
           {data.map((item) => (
-            <tr key={item.week} className="border-b hover:bg-gray-50">
+            <tr
+              key={item.week}
+              onClick={() => handleRowClick(item.week)}
+              className="border-b hover:bg-gray-50 cursor-pointer"
+            >
               <td className="px-4 py-3">{item.week}</td>
               <td className="px-4 py-3">{item.date}</td>
               <td className="px-4 py-3">
@@ -38,7 +49,7 @@ export default function TimesheetTable() {
                   {item.status}
                 </span>
               </td>
-              <td className="px-4 py-3 text-right text-blue-600 font-medium cursor-pointer">
+              <td className="px-4 py-3 text-right text-blue-600 font-medium">
                 {item.status === "MISSING"
                   ? "Create"
                   : item.status === "INCOMPLETE"
