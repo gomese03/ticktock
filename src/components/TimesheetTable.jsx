@@ -1,13 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const data = [
-  { week: 1, date: "1 - 5 January, 2024", status: "COMPLETED" },
-  { week: 2, date: "8 - 12 January, 2024", status: "COMPLETED" },
-  { week: 3, date: "15 - 19 January, 2024", status: "INCOMPLETE" },
-  { week: 4, date: "22 - 26 January, 2024", status: "COMPLETED" },
-  { week: 5, date: "28 January - 1 February, 2024", status: "MISSING" },
-];
+import { getTimesheets } from "../lib/api";
 
 const statusStyles = {
   COMPLETED: "bg-green-100 text-green-800",
@@ -17,10 +10,38 @@ const statusStyles = {
 
 export default function TimesheetTable() {
   const navigate = useNavigate();
+  const [timesheets, setTimesheets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const handleRowClick = (week) => {
     navigate(`/dashboard/${week}`);
   };
+
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      try {
+        setLoading(true);
+        setError("");
+        const data = await getTimesheets();
+        if (alive) setTimesheets(data);
+      } catch (e) {
+        if (alive) setError(e?.message || "Something went wrong");
+      } finally {
+        if (alive) setLoading(false);
+      }
+    })();
+    return () => { alive = false; };
+  }, []);
+
+  if (loading) {
+    return <div className="p-6 text-center text-gray-500">Loading timesheets...</div>;
+  }
+
+  if (error) {
+    return <div className="p-6 text-center text-red-600">Error: {error}</div>;
+  }
 
   return (
     <div className="overflow-x-auto bg-white shadow rounded-lg border">
@@ -34,7 +55,7 @@ export default function TimesheetTable() {
           </tr>
         </thead>
         <tbody className="text-gray-800 text-sm">
-          {data.map((item) => (
+          {timesheets.map((item) => (
             <tr
               key={item.week}
               onClick={() => handleRowClick(item.week)}
@@ -43,23 +64,21 @@ export default function TimesheetTable() {
               <td className="px-4 py-3">{item.week}</td>
               <td className="px-4 py-3">{item.date}</td>
               <td className="px-4 py-3">
-                <span
-                  className={`px-3 py-1 text-xs font-semibold rounded-full ${statusStyles[item.status]}`}
-                >
+                <span className={`px-3 py-1 text-xs font-semibold rounded-full ${statusStyles[item.status]}`}>
                   {item.status}
                 </span>
               </td>
               <td className="px-4 py-3 text-right text-blue-600 font-medium">
-                {item.status === "MISSING"
-                  ? "Create"
-                  : item.status === "INCOMPLETE"
-                  ? "Update"
-                  : "View"}
+                {item.status === "MISSING" ? "Create" : item.status === "INCOMPLETE" ? "Update" : "View"}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      {timesheets.length === 0 && (
+        <div className="text-center py-4 text-gray-500 text-sm">No timesheets found</div>
+      )}
     </div>
   );
 }

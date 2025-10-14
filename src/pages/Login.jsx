@@ -12,12 +12,12 @@ export default function Login() {
     setError("");
 
     // 🧪 Dummy authentication
-    if (email === "admin@example.com" && password === "password123") {
+    if (email === "admin@eg.com" && password === "pwd123") {
       const fakeToken = "fake-jwt-token-12345";
       sessionStorage.setItem("authToken", fakeToken);
       navigate("/dashboard");
     } else {
-      setError("Invalid credentials. Try admin@example.com / password123");
+      setError("Invalid credentials. Try admin@eg.com / pwd123");
     }
   };
 
