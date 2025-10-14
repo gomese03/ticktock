@@ -1,6 +1,6 @@
 import React from "react";
 
-const TimesheetHeader = () => {
+const TimesheetHeader = ({totalHours}) => {
   return (
     <div className="flex justify-between items-center">
       <div>
@@ -8,7 +8,7 @@ const TimesheetHeader = () => {
         <p className="text-gray-500 text-sm">21 – 26 January, 2024</p>
       </div>
       <div className="text-right">
-        <div className="text-gray-600 text-sm mb-1">20/40 hrs</div>
+        <div className="text-gray-600 text-sm mb-1">{totalHours}/40 hrs</div>
         <div className="w-32 h-2 bg-gray-200 rounded-full">
           <div className="h-2 bg-orange-500 rounded-full" style={{ width: "50%" }}></div>
         </div>

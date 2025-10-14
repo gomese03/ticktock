@@ -9,7 +9,7 @@ export default function DashboardLayout({ children }) {
         {children}
       </main>
       <footer className="text-center py-4 text-gray-500 text-sm border-t">
-        © 2024 gomese. All rights reserved.
+        © 2025 gomese. No rights reserved.
       </footer>
     </div>
   );

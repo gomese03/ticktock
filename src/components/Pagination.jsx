@@ -18,7 +18,7 @@ export default function Pagination() {
           <button
             key={num}
             className={`px-3 py-1 border rounded ${
-              num === 3 ? "bg-blue-600 text-white" : "text-gray-600 hover:bg-gray-100"
+              num === 3 ? "bg-blue-50 text-blue-500" : "text-gray-600 hover:bg-gray-100"
             }`}
           >
             {num}

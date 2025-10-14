@@ -30,16 +30,18 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-white border-b shadow-sm px-6 py-4 flex justify-between items-center relative">
-      {/* Logo */}
-      <div
-        onClick={handleLogoClick}
-        className="text-xl font-bold cursor-pointer hover:text-blue-600 transition"
-      >
-        ticktock
+    <nav className="bg-white border-b px-6 py-4 flex justify-between items-center relative">
+      <div className="flex items-center gap-8">
+        <div
+          onClick={handleLogoClick}
+          className="text-xl font-bold cursor-pointer hover:text-blue-600 transition"
+        >
+          ticktock
+        </div>
+
+        <div className="text-sm">Timesheets</div>
       </div>
 
-      {/* User Dropdown */}
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setDropdownOpen((prev) => !prev)}
