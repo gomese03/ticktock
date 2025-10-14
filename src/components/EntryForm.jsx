@@ -9,7 +9,7 @@ export default function EntryForm({ onCancel }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = { project, type, description, hours };
-    console.log("New Entry:", payload);
+    console.log("New Entry:", payload); // save api call
     onCancel();
   };
 
