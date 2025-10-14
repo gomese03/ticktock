@@ -1,11 +1,20 @@
 // Mock implementation for dev. Swap to real fetch later.
 import mockTimesheets from "../mock/timesheets.json";
+import mockTimesheetDetails from "../mock/timesheetDetails.json";
 
 export async function getTimesheets() {
   // simulate network latency
   await new Promise((r) => setTimeout(r, 300));
   // return a copy to avoid accidental mutations
   return JSON.parse(JSON.stringify(mockTimesheets));
+}
+
+export async function getTimesheetDetails(week) {
+  // simulate latency
+  await new Promise((res) => setTimeout(res, 300));
+  // In a real app, use `week` to fetch `/api/timesheet/${week}`
+  return JSON.parse(JSON.stringify(mockTimesheetDetails));
+//   return mockTimesheetDetails;
 }
 
 /*

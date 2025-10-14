@@ -1,0 +1,11 @@
+{
+  "week": 3,
+  "totalHours": 40,
+  "days": [
+    { "date": "Jan 21", "tasks": ["Homepage Development", "Homepage Development"] },
+    { "date": "Jan 22", "tasks": ["Homepage Development", "Homepage Development", "Homepage Development"] },
+    { "date": "Jan 23", "tasks": ["Homepage Development", "Homepage Development", "Homepage Development"] },
+    { "date": "Jan 24", "tasks": ["Homepage Development", "Homepage Development", "Homepage Development"] },
+    { "date": "Jan 25", "tasks": [] }
+  ]
+}
