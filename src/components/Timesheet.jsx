@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import TimesheetHeader from "./TimesheetHeader";
 import TimesheetDay from "./TimesheetDay";
 import { getTimesheetDetails } from "../lib/api";
 
-const Timesheet = ({ week }) => {
+const Timesheet = () => {
+  const { week } = useParams();
   const [timesheet, setTimesheet] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -13,6 +15,7 @@ const Timesheet = ({ week }) => {
     (async () => {
       try {
         setLoading(true);
+        console.log('week: ', week);
         const data = await getTimesheetDetails(week);
         console.log('data: ', data);
         if (alive) setTimesheet(data);
