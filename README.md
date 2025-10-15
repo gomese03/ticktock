@@ -28,9 +28,9 @@ git clone https://github.com/gomese03/ticktock.git
 
 ## Tech stack
 
-Frontend: ReactJs with Vite, Javascipt, Tailwind
-Backend: Node.js with express server
-Hosting: S3 hosting bucket, Route53, Cloudfront
+- Frontend: ReactJs with Vite, Javascipt, Tailwind
+- Backend: Node.js with express server
+- Hosting: S3 hosting bucket, Route53, Cloudfront
 
 ## Notes
 ### Implementation details
@@ -42,18 +42,18 @@ Clicking on the 'ticktock' div in navbar will navigate to dashboard.
 Logout option is available in the navbar on clicking the username.
 
 ### Not implemented
-User session management and user details (hardcoded)
-Component abstraction
-Filter and pagination implementation
-Progress bar on details page
-Week dates on details page (hardcoded)
-Pixel perfect CSS
-Authenticated APIs
-POST/PUT APIs
-Database
-Unit tests
+- User session management and user details (hardcoded)
+- Component abstraction
+- Filter and pagination implementation
+- Progress bar on details page
+- Week dates on details page (hardcoded)
+- Pixel perfect CSS
+- Authenticated APIs
+- POST/PUT APIs
+- Database
+- Unit tests
 
-*the code running locally gets the API response from the server. The app deployed at https://ticktock.gomese.com/ is running with mock APIs and not from an actual backend server
+* the code running locally gets the API response from the server. The app deployed at https://ticktock.gomese.com/ is running with mock APIs and not from an actual backend server
 
 ### Known Issues
-1) Refreshing the page from the login landing page will an access denied error
+1) Refreshing the page from the login landing page will give an access denied error
