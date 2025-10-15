@@ -54,6 +54,7 @@ Logout option is available in the navbar on clicking the username.
 - Unit tests
 
 * the code running locally gets the API response from the server. The app deployed at https://ticktock.gomese.com/ is running with mock APIs and not from an actual backend server
+* ChatGPT prompts were used to create the components
 
 ### Known Issues
 1) Refreshing the page from the login landing page will give an access denied error
