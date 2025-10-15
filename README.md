@@ -15,7 +15,7 @@ First, pull the source code to your local machine by running the following comma
 git clone https://github.com/gomese03/ticktock.git
 ```
 
-## Run backend
+### Run backend
 - navigate to the `/server` folder in a command line terminal
 - run `npm ci` to install all required dependencies
 - to start the server run `node index.js`
